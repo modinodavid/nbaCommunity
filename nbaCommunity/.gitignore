@@ -2,3 +2,4 @@
 .class/
 *.[oa]
 *~
+build/
