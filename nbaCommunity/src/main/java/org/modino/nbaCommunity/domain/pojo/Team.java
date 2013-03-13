@@ -16,7 +16,6 @@ import javax.persistence.Transient;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
-import org.modino.nbaCommunity.dao.hibernate.HibernateUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,7 +31,7 @@ public class Team extends NBATeam implements Serializable {
 
 	private static final long serialVersionUID = 7120245471043503643L;
 	
-	private static final Logger logger = LoggerFactory.getLogger(HibernateUtil.class);
+	private static final Logger logger = LoggerFactory.getLogger(Team.class);
 	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
