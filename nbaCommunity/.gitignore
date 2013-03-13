@@ -3,3 +3,4 @@
 *.[oa]
 *~
 build/
+/pom.xml
