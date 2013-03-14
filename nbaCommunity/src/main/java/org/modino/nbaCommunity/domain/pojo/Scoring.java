@@ -4,14 +4,32 @@ import java.io.Serializable;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 @Named("scoring")
 @SessionScoped
+@Entity
+@Table(name="scoring")
+@DynamicInsert(false)
+//Solo las columnas modificadas serán actualizadas en tiempo de ejecucion
+@DynamicUpdate(true)
 public class Scoring implements Serializable{
 	
 	private static final long serialVersionUID = 7894652533150093463L;
+	
+	public static enum Type {Default, Customized} 
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
+	
 	// El tipo puede ser 'Por defecto' o 'Personalizado'
-	private String type;
+	private Type type;
 	private int assists;
 	private int offensiveRebouns;
 	private int defensiveRebouns;
@@ -33,11 +51,19 @@ public class Scoring implements Serializable{
 		super();
 	}
 
-	public String getType() {
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Type getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(Type type) {
 		this.type = type;
 	}
 

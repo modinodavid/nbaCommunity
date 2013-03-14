@@ -23,7 +23,7 @@ import org.slf4j.LoggerFactory;
 @Named("league")
 @SessionScoped
 @Entity
-@Table(name="users")
+@Table(name="league")
 @DynamicInsert(false)
 //Solo las columnas modificadas serán actualizadas en tiempo de ejecucion
 @DynamicUpdate(true)
