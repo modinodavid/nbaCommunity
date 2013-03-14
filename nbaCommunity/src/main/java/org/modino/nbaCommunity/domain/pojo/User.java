@@ -12,14 +12,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.validator.constraints.Email;
+
+import com.sun.istack.internal.NotNull;
 
 @Named
 @SessionScoped
 @Entity
-@Table(name="users")
+@Table(name="user")
 @DynamicInsert(false)
 //Solo las columnas modificadas serán actualizadas en tiempo de ejecucion
 @DynamicUpdate(true)
@@ -30,16 +34,26 @@ public class User implements Serializable{
 	public static enum Type {User, Admin};
 	public static enum Gender {Male, Female};
 	
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id @NotNull @GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
 	//tipo User o Administrator
+	@NotNull
 	private Type type;
 	
 	//Campos obligatorios
+	@NotNull
 	private String username;
+	
+	@NotNull @Size(max = 255) 
 	private String password;
+	
+	private String salt;
+	
+	@Transient
 	private String repassword;
+	
+	@Email @NotNull
 	private String email;
 	
 	//Campos opcionales
@@ -53,7 +67,7 @@ public class User implements Serializable{
 	@Embedded
 	private Address address; 
 	
-	// @Transient -> Se relaciona con este objeto pero no se añaden sus campos como columnas de la tabla  
+	// @Transient -> Se relaciona con este objeto pero no se añaden sus campos como columnas en la tabla de BD  
 	@Transient
 	private League league;
 	
@@ -176,6 +190,15 @@ public class User implements Serializable{
 		this.address = address;
 	}
 
+	public String getSalt() {
+		return salt;
+	}
+
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
+
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -196,6 +219,7 @@ public class User implements Serializable{
 				+ ((password == null) ? 0 : password.hashCode());
 		result = prime * result
 				+ ((repassword == null) ? 0 : repassword.hashCode());
+		result = prime * result + ((salt == null) ? 0 : salt.hashCode());
 		result = prime * result + ((team == null) ? 0 : team.hashCode());
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		result = prime * result
@@ -261,6 +285,11 @@ public class User implements Serializable{
 				return false;
 		} else if (!repassword.equals(other.repassword))
 			return false;
+		if (salt == null) {
+			if (other.salt != null)
+				return false;
+		} else if (!salt.equals(other.salt))
+			return false;
 		if (team == null) {
 			if (other.team != null)
 				return false;
@@ -276,7 +305,6 @@ public class User implements Serializable{
 		return true;
 	}
 
-	
 	@Override
 	public String toString() {
 		return "User [username=" + username + ", email=" + email + ", avatar="

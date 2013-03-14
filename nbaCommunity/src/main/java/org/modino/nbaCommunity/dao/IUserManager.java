@@ -8,9 +8,10 @@ import org.modino.nbaCommunity.domain.pojo.User;
 
 public interface IUserManager {
 	
-	public void createTeam(Team team);
-	public void inviteFriend(User user);
-	public void betForPlayers(List<Player> players);
-	public void tradePlayers(List<Player> playes);
+	void createTeam(Team team);
+	void inviteFriend(User user);
+	void betForPlayers(List<Player> players);
+	void tradePlayers(List<Player> playes);
+	void register(User user);
 
 }
