@@ -8,6 +8,7 @@ import org.modino.nbaCommunity.dao.IAdministratorManager;
 import org.modino.nbaCommunity.dao.hibernate.HibernateUtil;
 import org.modino.nbaCommunity.domain.pojo.League;
 import org.modino.nbaCommunity.domain.pojo.NBAPlayer;
+import org.modino.nbaCommunity.domain.pojo.NBATeam;
 import org.modino.nbaCommunity.domain.pojo.Player;
 import org.modino.nbaCommunity.domain.pojo.Team;
 import org.modino.nbaCommunity.domain.pojo.User;
@@ -72,6 +73,21 @@ public class AdministratorManagerImpl implements IAdministratorManager {
 	public void tradePlayers(List<Player> playes) {
 		// TODO Auto-generated method stub
 
+	}
+
+	public void addNBATeam(NBATeam team) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void deleteNBATeam(NBATeam team) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void modifyNBATeam(NBATeam team) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
