@@ -12,8 +12,24 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <eclipselink.version>2.4.0</eclipselink.version>
+    <jboss.home></jboss.home>
+    <jboss.server.name>default</jboss.server.name>
+    <jboss.host.name>localhost</jboss.host.name>
+    <jboss.port></jboss.port>
+    <deployUrlPath></deployUrlPath>
+    <undeployUrlPath></undeployUrlPath>
+    <fileName></fileName>
   </properties>
 
+  <!-- ECLIPSELINK PROJECT REPOSITORY -->
+  <repositories>
+		<repository>
+			<id>EclipseLink</id>
+			<url>http://download.eclipse.org/rt/eclipselink/maven.repo</url>
+		</repository>
+  </repositories>
+  
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -33,11 +49,11 @@
     </dependency>
    
     <!-- HIBERNATE 4 DEPENDENCIES -->
-    <dependency>
-    	<groupId>org.hibernate</groupId>
-    	<artifactId>hibernate-annotations</artifactId>
-    	<version>3.5.6-Final</version>
-    </dependency>
+<!--     <dependency> -->
+<!--     	<groupId>org.hibernate</groupId> -->
+<!--     	<artifactId>hibernate-annotations</artifactId> -->
+<!--     	<version>3.5.6-Final</version> -->
+<!--     </dependency> -->
     <dependency>
     	<groupId>org.hibernate</groupId>
     	<artifactId>hibernate-core</artifactId>
@@ -48,6 +64,11 @@
     	<artifactId>hibernate-validator</artifactId>
     	<version>5.0.0.CR1</version>
     </dependency>
+    <dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-commons-annotations</artifactId>
+		<version>3.2.0.Final</version>
+	</dependency>
     <!-- SHIRO DEPENDENCIES -->
     <dependency>
 		<groupId>org.apache.shiro</groupId>
@@ -80,5 +101,68 @@
     	<artifactId>spring-web</artifactId>
     	<version>3.2.1.RELEASE</version>
     </dependency>
+    <!-- JBOSS DEPENDENCY -->
+    <dependency>
+    	<groupId>org.jboss.as.plugins</groupId>
+    	<artifactId>jboss-as-maven-plugin</artifactId>
+    	<version>7.4.Final</version>
+    	<type>maven-plugin</type>
+    </dependency>
+    <!-- eclipselink.jar with dependencies except commonj.sdo -->
+	<dependency>
+		<groupId>org.eclipse.persistence</groupId>
+		<artifactId>eclipselink</artifactId>
+		<version>${eclipselink.version}</version>
+		<exclusions>
+			<exclusion>
+				<artifactId>commonj.sdo</artifactId>
+				<groupId>commonj.sdo</groupId>
+			</exclusion>
+		</exclusions>
+	</dependency>
+	<!-- MYSQL -->
+	<dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+		<version>5.1.23</version>
+	</dependency>
+	<!-- JUNIT 4 -->
+	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>4.11</version>
+	</dependency>
+	<!-- SPRING TEST -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-test</artifactId>
+		<version>3.2.1.RELEASE</version>
+	</dependency>
+	<!-- SLF4j logging -->
+	<dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>slf4j-log4j12</artifactId>
+		<version>1.7.2</version>
+	</dependency>
   </dependencies>
+  
+  <!-- PLUGIN CONFIGURATION JBOSS -->
+  <build>
+  	<plugins>
+  		<plugin>
+  			<groupId>org.codehaus.mojo</groupId>
+  			<artifactId>jboss-maven-plugin</artifactId>
+  			<version>1.5.0</version>
+  			<configuration>
+  				<jbossHome>${jboss.home}</jbossHome>
+  				<serverName>${jboss.server.name}</serverName>
+  				<hostName>${jboss.host.name}</hostName>
+  				<port>${jboss.port}</port>
+  				<deployUrlPath>${jboss.deploy.url}</deployUrlPath>
+  				<undeployUrlPath>${jboss.undeploy.url}</undeployUrlPath>
+  				<fileName>${project.build.directory}/${project.build.finalName}.${project.packaging}</fileName>
+  			</configuration>
+  		</plugin>
+  	</plugins>
+  </build>
 </project>

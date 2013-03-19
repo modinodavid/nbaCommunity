@@ -18,12 +18,30 @@ public class HibernateUtil {
 		Configuration configuration = new Configuration();
 		configuration.configure();
 		ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
+		// Create the session factory object to connect to the DataSource using JNDI defined in the file 'hibernate-cfg.xml'  
 		sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 		logger.info("Creating session factory");
 	}
 
+//	private static SessionFactory buildSessionFactory() {
+//		 try {
+//			 Configuration configuration = new Configuration();
+//				configuration.configure();
+//			 ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties()).buildServiceRegistry();
+////			 new SchemaExport(configuration).create(false, true);
+//	            // Create the SessionFactory from hibernate.cfg.xml
+////			 new SchemaExport(configuration).create(false, true);
+//	            return new AnnotationConfiguration()
+//	            		.configure()
+//	                    .buildSessionFactory(serviceRegistry);
+//	        } catch (Throwable ex) {
+//	            System.err.println("Initial SessionFactory creation failed." + ex);
+//	            throw new ExceptionInInitializerError(ex);
+//	        }
+//	}
 	public static Session getSession() {
 		if(sessionFactory == null) {
+//			buildSessionFactory();
 			openSessionFactory();
 		}
 		
