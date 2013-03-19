@@ -8,9 +8,13 @@ import javax.persistence.Embeddable;
 public class Address implements Serializable{
 
 	private static final long serialVersionUID = -2276842786703078539L;
+	
 	private String street;
+	
 	private String postalCode;
+	
 	private String province;
+	
 	private String country;
 	
 	public Address() {
@@ -48,7 +52,7 @@ public class Address implements Serializable{
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -61,7 +65,7 @@ public class Address implements Serializable{
 		result = prime * result + ((street == null) ? 0 : street.hashCode());
 		return result;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -93,13 +97,12 @@ public class Address implements Serializable{
 			return false;
 		return true;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Address [street=" + street + ", postalCode=" + postalCode
 				+ ", province=" + province + ", country=" + country + "]";
 	}
-
 	
 	
 }

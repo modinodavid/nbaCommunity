@@ -1,15 +1,20 @@
 package org.modino.nbaCommunity.domain.pojo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.Size;
@@ -17,10 +22,12 @@ import javax.validation.constraints.Size;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.validator.constraints.Email;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sun.istack.internal.NotNull;
 
-@Named
+@Named("user")
 @SessionScoped
 @Entity
 @Table(name="user")
@@ -30,11 +37,13 @@ import com.sun.istack.internal.NotNull;
 public class User implements Serializable{
 
 	private static final long serialVersionUID = 3323664210787119963L;
+	private static final Logger logger = LoggerFactory.getLogger(User.class);
 	
 	public static enum Type {User, Admin};
 	public static enum Gender {Male, Female};
 	
 	@Id @NotNull @GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="idUser")
 	private int id;
 	
 	//tipo User o Administrator
@@ -69,10 +78,12 @@ public class User implements Serializable{
 	
 	// @Transient -> Se relaciona con este objeto pero no se añaden sus campos como columnas en la tabla de BD  
 	@Transient
-	private League league;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy ="user")
+	private List<League> leagues;
 	
-	@Transient
-	private Team team;
+//	@Transient 
+//	@ManyToOne @JoinColumn(name = "team_id")
+//	private List<Team> teams;
 	
 	public User() {
 		super();
@@ -158,20 +169,12 @@ public class User implements Serializable{
 		this.avatar = avatar;
 	}
 
-	public League getLeague() {
-		return league;
+	public List<League> getLeagues() {
+		return leagues;
 	}
 
-	public void setLeague(League league) {
-		this.league = league;
-	}
-
-	public Team getTeam() {
-		return team;
-	}
-
-	public void setTeam(Team team) {
-		this.team = team;
+	public void setLeagues(List<League> leagues) {
+		this.leagues = leagues;
 	}
 
 	public Gender getGender() {
@@ -197,8 +200,25 @@ public class User implements Serializable{
 	public void setSalt(String salt) {
 		this.salt = salt;
 	}
-
 	
+	public void addLeague(League league){
+		if(this.leagues == null){
+			this.leagues = new ArrayList<League>();
+		}
+		this.leagues.add(league);
+		logger.info("One league has added to your user");
+	}
+	
+	public void removeTeam(League team){
+		if(this.leagues != null){
+			this.leagues.remove(team);
+			logger.info("The league has removed from your user");
+		}
+		else{
+			logger.info("Unable to remove the league from your user");
+		}
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -214,13 +234,12 @@ public class User implements Serializable{
 		result = prime * result + id;
 		result = prime * result
 				+ ((lastName == null) ? 0 : lastName.hashCode());
-		result = prime * result + ((league == null) ? 0 : league.hashCode());
+		result = prime * result + ((leagues == null) ? 0 : leagues.hashCode());
 		result = prime * result
 				+ ((password == null) ? 0 : password.hashCode());
 		result = prime * result
 				+ ((repassword == null) ? 0 : repassword.hashCode());
 		result = prime * result + ((salt == null) ? 0 : salt.hashCode());
-		result = prime * result + ((team == null) ? 0 : team.hashCode());
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		result = prime * result
 				+ ((username == null) ? 0 : username.hashCode());
@@ -270,10 +289,10 @@ public class User implements Serializable{
 				return false;
 		} else if (!lastName.equals(other.lastName))
 			return false;
-		if (league == null) {
-			if (other.league != null)
+		if (leagues == null) {
+			if (other.leagues != null)
 				return false;
-		} else if (!league.equals(other.league))
+		} else if (!leagues.equals(other.leagues))
 			return false;
 		if (password == null) {
 			if (other.password != null)
@@ -290,11 +309,6 @@ public class User implements Serializable{
 				return false;
 		} else if (!salt.equals(other.salt))
 			return false;
-		if (team == null) {
-			if (other.team != null)
-				return false;
-		} else if (!team.equals(other.team))
-			return false;
 		if (type != other.type)
 			return false;
 		if (username == null) {
@@ -307,12 +321,13 @@ public class User implements Serializable{
 
 	@Override
 	public String toString() {
-		return "User [username=" + username + ", email=" + email + ", avatar="
-				+ avatar + ", firstName=" + firstName + ", lastName="
-				+ lastName + ", birthday=" + birthday + ", gender=" + gender
-				+ ", league=" + league + ", team=" + team + "]";
+		return "User [id=" + id + ", type=" + type + ", username=" + username
+				+ ", password=" + password + ", salt=" + salt + ", repassword="
+				+ repassword + ", email=" + email + ", avatar=" + avatar
+				+ ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", birthday=" + birthday + ", gender=" + gender
+				+ ", address=" + address + ", leagues=" + leagues + "]";
 	}
 
-
-		
+	
 }

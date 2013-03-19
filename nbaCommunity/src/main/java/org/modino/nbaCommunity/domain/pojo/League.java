@@ -1,17 +1,24 @@
 package org.modino.nbaCommunity.domain.pojo;
 
-import java.awt.Image;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
-import javax.persistence.Embedded;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -19,6 +26,8 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.sun.istack.internal.NotNull;
 
 @Named("league")
 @SessionScoped
@@ -34,24 +43,48 @@ public class League implements Serializable {
 	
 	// Campos basicos
 	//@GeneratedValue(strategy=GenerationType.IDENTITY) -> indica las claves principales para la entidad y crea una columna en la BD para ella
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id @NotNull @GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="idLeague")
 	private int id;
+	
+	@NotNull
 	private String name;
-	private Image logo;
+	
+	@Lob
+	@Basic(fetch = FetchType.LAZY)
+	private byte[] logo;
+	
+	@NotNull
 	private String password;
+	
+	@NotNull
 	private int maxTeams;
+	
 	// Salario inicial para todos los equipos
+	@NotNull
+	@Column(name= "salaryPerTeam")
 	private double initialSalaryPerEachTeam;
-	// Calificación o reparto de puntos
-	@Embedded
-	private Scoring scoring;
 	
 	@Transient
+	@OneToMany(cascade = CascadeType.ALL, mappedBy ="league")
 	private List<Team> teams;
+	
+	// mappedBy -> to indicate the entity that owns the relationship.
+	@ManyToOne @JoinColumn(name="idUser")
+	private User user;
 	
 	public League() {
 		super();
 	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 
 	public String getName() {
 		return name;
@@ -61,11 +94,11 @@ public class League implements Serializable {
 		this.name = name;
 	}
 
-	public Image getLogo() {
+	public byte[] getLogo() {
 		return logo;
 	}
 
-	public void setLogo(Image logo) {
+	public void setLogo(byte[] logo) {
 		this.logo = logo;
 	}
 
@@ -93,20 +126,20 @@ public class League implements Serializable {
 		this.initialSalaryPerEachTeam = initialSalaryPerEachTeam;
 	}
 
-	public Scoring getScoring() {
-		return scoring;
-	}
-
-	public void setScoring(Scoring scoring) {
-		this.scoring = scoring;
-	}
-
 	public List<Team> getTeams() {
 		return teams;
 	}
 
 	public void setTeams(List<Team> teams) {
 		this.teams = teams;
+	}
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 	public void addTeam(Team team){
@@ -117,7 +150,7 @@ public class League implements Serializable {
 		logger.info("One team has added to your league");
 	}
 	
-	public void removePlayer(Team team){
+	public void removeTeam(Team team){
 		if(this.teams != null){
 			this.teams.remove(team);
 			logger.info("The team has removed from your league");
@@ -135,13 +168,13 @@ public class League implements Serializable {
 		long temp;
 		temp = Double.doubleToLongBits(initialSalaryPerEachTeam);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((logo == null) ? 0 : logo.hashCode());
+		result = prime * result + Arrays.hashCode(logo);
 		result = prime * result + maxTeams;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result
 				+ ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((scoring == null) ? 0 : scoring.hashCode());
 		result = prime * result + ((teams == null) ? 0 : teams.hashCode());
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
 
@@ -159,10 +192,7 @@ public class League implements Serializable {
 		if (Double.doubleToLongBits(initialSalaryPerEachTeam) != Double
 				.doubleToLongBits(other.initialSalaryPerEachTeam))
 			return false;
-		if (logo == null) {
-			if (other.logo != null)
-				return false;
-		} else if (!logo.equals(other.logo))
+		if (!Arrays.equals(logo, other.logo))
 			return false;
 		if (maxTeams != other.maxTeams)
 			return false;
@@ -176,27 +206,26 @@ public class League implements Serializable {
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (scoring == null) {
-			if (other.scoring != null)
-				return false;
-		} else if (!scoring.equals(other.scoring))
-			return false;
 		if (teams == null) {
 			if (other.teams != null)
 				return false;
 		} else if (!teams.equals(other.teams))
 			return false;
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
+			return false;
 		return true;
 	}
 
-	
 	@Override
 	public String toString() {
-		return "League [name=" + name + ", maxTeams=" + maxTeams
-				+ ", initialSalaryPerEachTeam=" + initialSalaryPerEachTeam
-				+ ", scoring=" + scoring + ", teams=" + teams + "]";
+		return "League [id=" + id + ", name=" + name + ", logo="
+				+ Arrays.toString(logo) + ", password=" + password
+				+ ", maxTeams=" + maxTeams + ", initialSalaryPerEachTeam="
+				+ initialSalaryPerEachTeam + ", teams=" + teams + ", user=" + user + "]";
 	}
-	
-	
+
 	
 }
