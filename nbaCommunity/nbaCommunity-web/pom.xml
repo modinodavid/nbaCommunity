@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <parent>
+    <groupId>org.modino.nbaCommunity</groupId>
+    <artifactId>nbaCommunity</artifactId>
+    <version>1.0</version>
+  </parent>
+  
+  <groupId>org.modino.nbaCommunity.web</groupId>
+  <artifactId>nbaCommunity-web</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <name>nbaCommunity-web</name>
+  <url>http://maven.apache.org</url>
+  
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+  <repositories>
+	<!-- PRIMEFACES -->
+	<repository>
+	    <id>prime-repo</id>
+	    <name>PrimeFaces Maven Repository</name>
+	    <url>http://repository.primefaces.org</url>
+	    <layout>default</layout>
+	</repository>
+	<!-- JSF 2.1 and Later -->
+	<repository>
+	  <id>jvnet-nexus-releases</id>
+	  <name>jvnet-nexus-releases</name>
+	  <url>https://maven.java.net/content/repositories/releases/</url>
+	</repository>
+  </repositories>
+  
+  <dependencies>
+	<!-- PRIMEFACES 3.5 -->
+	<dependency>
+		<groupId>org.primefaces</groupId>
+		<artifactId>primefaces</artifactId>
+		<version>3.5</version>
+	</dependency>
+	<!-- PRIMEFACES MOBILE -->
+	<dependency>
+		<groupId>org.primefaces</groupId>
+		<artifactId>primefaces-mobile</artifactId>
+		<version>0.9.3</version>
+	</dependency>
+	<!-- JSF 2.1 -->
+	<dependency>
+		<groupId>javax.faces</groupId>
+		<artifactId>javax.faces-api</artifactId>
+		<version>2.1</version>
+	</dependency>
+  </dependencies>
+</project>

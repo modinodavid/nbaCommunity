@@ -1,4 +1,4 @@
-package org.modino.nbaCommunity.nbaCommunity;
+package org.nbaCommunity.web;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

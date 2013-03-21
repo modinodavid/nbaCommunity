@@ -1,4 +1,4 @@
-package org.modino.nbaCommunity.nbaCommunity;
+package org.modino.nbaCommunity.domain.pojo;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -21,7 +21,7 @@ import org.modino.nbaCommunity.util.SaltAwareJdbcRealm;
 
 // Quitar de la clase que extienda //extends TestCase -> cuando se utilicen anotaciones como @Before ...
 public class UserTest { 
-		
+
 	  	@Before public void setUp() throws Exception {  
 		Session session = HibernateUtil.getSession();
 
@@ -93,13 +93,13 @@ public class UserTest {
 		Session session = HibernateUtil.getSession();
 	    // Begin a new local transaction so that we can persist a new entity
 		session.getTransaction().begin();
-	   
+
 		Query q = session.createQuery("SELECT u FROM User u WHERE u.username = :username AND u.email = :email");
 	    q.setParameter("username", "pepito");
 	    q.setParameter("email", "pepe@aa.com");
-	    
+
 	    assertTrue(q.list().size() == 1);
-	    
+
 	    User user = (User) q.list().get(0);
 	    session.delete(user);
 	    session.getTransaction().commit();

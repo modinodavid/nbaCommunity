@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+    	<!-- DATASOURCE -->
+    	<!-- el mismo nombre definido en el datasource del fichero standalone.xml de JBOSS -->
+<!--     	<property name="hibernate.connection.datasource">java:jboss/datasources/MySQLDS</property>	 -->
+<!--     	<property name="dialect">org.modino.nbaCommunity.dao.hibernate.NBAMySQL5Dialect</property> -->
+		<!-- Enable Hibernate's automatic session context management -->
+        <property name="current_session_context_class">thread</property>
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        
+        <!-- CONFIGURACION DRIVER CONEXION  -->
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/nbaCommunity</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password"></property>
+        <property name="hibernate.connection.pool_size">10</property> 
+        <property name="show_sql">true</property>
+        <property name="hibernate.hbm2ddl.auto">create</property>
+        <property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+         <property name="hibernate.current_session_context_class">thread</property>    
+        
+    	<!-- When we want to persist all the tables of the schema -->
+<!--     	<property name="hbm2ddl.auto">create</property> -->
+    	<!-- Drop and re-create the database schema on startup -->
+<!--     <property name="hbm2ddl.auto">update</property> -->
+    	<!-- When we want to use the tables of the schema -->
+    	<property name="hbm2ddl.auto">validate</property>
+   		
+   		<!-- "Import" the mapping resources here -->
+    	<property name="hibernate.id.new_generator_mappings">true</property>
+    	<mapping class="org.modino.nbaCommunity.domain.pojo.User"/>
+    	<mapping class="org.modino.nbaCommunity.domain.pojo.Team"/>
+    	<mapping class="org.modino.nbaCommunity.domain.pojo.League"/>
+    	<mapping class="org.modino.nbaCommunity.domain.pojo.Player"/>
+    	<mapping class="org.modino.nbaCommunity.domain.pojo.Match"/>
+    	<mapping class="org.modino.nbaCommunity.domain.pojo.Scoring"/>
+    	<mapping class="org.modino.nbaCommunity.domain.pojo.NBATeam"/>
+    	<mapping class="org.modino.nbaCommunity.domain.pojo.NBAPlayer"/>
+    </session-factory>
+</hibernate-configuration>
