@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.modino.nbaCommunity.dao.IUserManager;
+import org.modino.nbaCommunity.dao.IUserDao;
 import org.modino.nbaCommunity.dao.hibernate.HibernateUtil;
 import org.modino.nbaCommunity.domain.pojo.Player;
 import org.modino.nbaCommunity.domain.pojo.Team;
@@ -12,9 +12,9 @@ import org.modino.nbaCommunity.domain.pojo.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class UserManagerImpl implements IUserManager {
+public class UserDaoImpl implements IUserDao {
 
-	private static final Logger logger = LoggerFactory.getLogger(AdministratorManagerImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(AdministratorDaoImpl.class);
 	private Session session;
 	
 	public void createTeam(Team team) {

@@ -42,23 +42,18 @@
 	</dependency>
   </dependencies>
   
-  <!-- PLUGIN CONFIGURATION JBOSS -->
-<!--   <build> -->
-<!--   	<plugins> -->
-<!--   		<plugin> -->
-<!--   			<groupId>org.codehaus.mojo</groupId> -->
-<!--   			<artifactId>jboss-maven-plugin</artifactId> -->
-<!--   			<version>1.5.0</version> -->
-<!--   			<configuration> -->
-<!--   				<jbossHome>${jboss.home}</jbossHome> -->
-<!--   				<serverName>${jboss.server.name}</serverName> -->
-<!--   				<hostName>${jboss.host.name}</hostName> -->
-<!--   				<port>${jboss.port}</port> -->
-<!--   				<deployUrlPath>${jboss.deploy.url}</deployUrlPath> -->
-<!--   				<undeployUrlPath>${jboss.undeploy.url}</undeployUrlPath> -->
-<!--   				<fileName>${project.build.directory}/${project.build.finalName}.${project.packaging}</fileName> -->
-<!--   			</configuration> -->
-<!--   		</plugin> -->
-<!--   	</plugins> -->
-<!--   </build> -->
+  <build>
+  	<plugins>
+  		<!-- JVM 1.6 COMPILER PLUGIN -->
+  		<plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.0</version>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin>
+  	</plugins>
+  </build>
 </project>

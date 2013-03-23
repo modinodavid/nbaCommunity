@@ -55,5 +55,18 @@
 		<artifactId>javax.faces-api</artifactId>
 		<version>2.1</version>
 	</dependency>
+	<!-- PRETTY FACES for JSF 2.x-->
+	<dependency>
+	   <groupId>com.ocpsoft</groupId>
+	   <artifactId>prettyfaces-jsf2</artifactId>
+	   <version>3.3.3</version>
+	</dependency>
+	
+	<!-- MODULE NBACOMMUNITY-MODEL -->
+	<dependency>
+		<groupId>org.modino.nbaCommunity.model</groupId>
+  		<artifactId>nbaCommunity-model</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
   </dependencies>
 </project>

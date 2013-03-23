@@ -2,7 +2,7 @@ package org.modino.nbaCommunity.dao.impl;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.modino.nbaCommunity.dao.IAdministratorManager;
+import org.modino.nbaCommunity.dao.IAdministratorDao;
 import org.modino.nbaCommunity.dao.hibernate.HibernateUtil;
 import org.modino.nbaCommunity.domain.pojo.League;
 import org.modino.nbaCommunity.domain.pojo.NBAPlayer;
@@ -10,13 +10,13 @@ import org.modino.nbaCommunity.domain.pojo.NBATeam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class AdministratorManagerImpl extends UserManagerImpl implements IAdministratorManager {
+public class AdministratorDaoImpl extends UserDaoImpl implements IAdministratorDao {
 
-	private static final Logger logger = LoggerFactory.getLogger(AdministratorManagerImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(AdministratorDaoImpl.class);
 	
 	private Session session;
 	
-	public AdministratorManagerImpl() {
+	public AdministratorDaoImpl() {
 		super();
 	}
 		

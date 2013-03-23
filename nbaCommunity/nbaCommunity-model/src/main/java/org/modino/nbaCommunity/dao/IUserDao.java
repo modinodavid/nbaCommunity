@@ -6,7 +6,7 @@ import org.modino.nbaCommunity.domain.pojo.Player;
 import org.modino.nbaCommunity.domain.pojo.Team;
 import org.modino.nbaCommunity.domain.pojo.User;
 
-public interface IUserManager {
+public interface IUserDao {
 	
 	void createTeam(Team team);
 	void inviteFriend(User user);

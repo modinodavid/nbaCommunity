@@ -1,4 +1,4 @@
-package org.modino.nbaCommunity.dao;
+package org.modino.nbaCommunity.bll;
 
 import org.modino.nbaCommunity.domain.pojo.League;
 import org.modino.nbaCommunity.domain.pojo.NBAPlayer;
