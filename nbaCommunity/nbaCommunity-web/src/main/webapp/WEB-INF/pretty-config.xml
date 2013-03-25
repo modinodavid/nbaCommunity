@@ -12,36 +12,36 @@
 		<view-id value="faces/public/index.jsf" />
 	</url-mapping>
 	
-	<url-mapping id="login">
-		<pattern value="public/login/" />
-		<view-id value="faces/public/login.jsf" />
-		<action>#{loginBean.setLoginError}</action>
-	</url-mapping>
+<!-- 	<url-mapping id="login"> -->
+<!-- 		<pattern value="public/login/" /> -->
+<!-- 		<view-id value="faces/public/login.jsf" /> -->
+<!-- 		<action>#{loginBean.setLoginError}</action> -->
+<!-- 	</url-mapping> -->
 	
-	<url-mapping id="logout">
-		<pattern value="/public/logout/" />
-		<view-id value="/j_spring_security_logout" />
-	</url-mapping>
+<!-- 	<url-mapping id="logout"> -->
+<!-- 		<pattern value="/public/logout/" /> -->
+<!-- 		<view-id value="/j_spring_security_logout" /> -->
+<!-- 	</url-mapping> -->
 
-	<url-mapping id="signup">
-		<pattern value="/public/signup/" />
-		<view-id value="/faces/public/register.jsf" />
-	</url-mapping>
+<!-- 	<url-mapping id="signup"> -->
+<!-- 		<pattern value="/public/signup/" /> -->
+<!-- 		<view-id value="/faces/public/register.jsf" /> -->
+<!-- 	</url-mapping> -->
 	
-	<url-mapping id="confirmation">
-		<pattern value="/public/signup/ok" />
-		<view-id value="/faces/public/register-confirmation.jsf" />
-	</url-mapping>	
+<!-- 	<url-mapping id="confirmation"> -->
+<!-- 		<pattern value="/public/signup/ok" /> -->
+<!-- 		<view-id value="/faces/public/register-confirmation.jsf" /> -->
+<!-- 	</url-mapping>	 -->
 	
-	<url-mapping id="validate_email">
-		<pattern value="/public/validate/#{token:paramsBean.token}" />
-		<view-id value="/faces/public/validate.jsf" />
-	</url-mapping>
+<!-- 	<url-mapping id="validate_email"> -->
+<!-- 		<pattern value="/public/validate/#{token:paramsBean.token}" /> -->
+<!-- 		<view-id value="/faces/public/validate.jsf" /> -->
+<!-- 	</url-mapping> -->
 	
-	<url-mapping id="validateconfirmation">
-		<pattern value="/public/validate/resend/ok" />
-		<view-id value="/faces/public/validateresend.jsf" />
-	</url-mapping>
+<!-- 	<url-mapping id="validateconfirmation"> -->
+<!-- 		<pattern value="/public/validate/resend/ok" /> -->
+<!-- 		<view-id value="/faces/public/validateresend.jsf" /> -->
+<!-- 	</url-mapping> -->
 	
 <!-- FIN URL MAPINGS -->	
 

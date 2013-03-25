@@ -8,19 +8,19 @@
     	<!-- el mismo nombre definido en el datasource del fichero standalone.xml de JBOSS -->
 <!--     	<property name="hibernate.connection.datasource">java:jboss/datasources/MySQLDS</property>	 -->
 <!--     	<property name="dialect">org.modino.nbaCommunity.dao.hibernate.NBAMySQL5Dialect</property> -->
-		<!-- Enable Hibernate's automatic session context management -->
-		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		
         
         <!-- CONFIGURACION DRIVER CONEXION  -->
-        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>	
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/nbaCommunity</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password"></property>
         <property name="hibernate.connection.pool_size">10</property> 
         <property name="show_sql">true</property>
-        <property name="hibernate.hbm2ddl.auto">create</property>
         <property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
-         <property name="hibernate.current_session_context_class">thread</property>    
+        <property name="hibernate.current_session_context_class">thread</property>
+         <!-- Enable Hibernate's automatic session context management -->
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>    
         
     	<!-- When we want to persist all the tables of the schema -->
 <!--     	<property name="hbm2ddl.auto">create</property> -->
