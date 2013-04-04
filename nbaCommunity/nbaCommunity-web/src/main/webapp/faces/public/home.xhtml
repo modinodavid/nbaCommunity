@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)http://twitter.github.com/bootstrap/examples/hero.html -->
+<html lang="en"
+	  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:pretty="http://ocpsoft.com/prettyfaces"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	<ui:composition template="/templates/public-space.xhtml">
+		<ui:define name="head">
+			
+		</ui:define>
+	
+		  <ui:define name="body">
+		    <div class="navbar navbar-inverse navbar-fixed-top">
+		      <div class="navbar-inner">
+		        <div class="container">
+		          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		          </button>
+		          <a class="brand" href="http://twitter.github.com/bootstrap/examples/hero.html#">NBA Community</a>
+		          <div class="nav-collapse collapse">
+		            <ul class="nav">
+		              <li class="active"><a href="http://twitter.github.com/bootstrap/examples/hero.html#">Home</a></li>
+		              <li><a href="http://twitter.github.com/bootstrap/examples/hero.html#about">Explorer</a></li>
+		              <li><a href="http://twitter.github.com/bootstrap/examples/hero.html#contact">How to play?</a></li>
+		              <li><a href="http://twitter.github.com/bootstrap/examples/hero.html#contact">Look for a league</a></li>
+		              <li><a href="http://twitter.github.com/bootstrap/examples/hero.html#contact">Forums</a></li>
+		<!--               <li class="dropdown"> -->
+		<!--                 <a href="http://twitter.github.com/bootstrap/examples/hero.html#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a> -->
+		<!--                 <ul class="dropdown-menu"> -->
+		<!--                   <li><a href="http://twitter.github.com/bootstrap/examples/hero.html#">Action</a></li> -->
+		<!--                   <li><a href="http://twitter.github.com/bootstrap/examples/hero.html#">Another action</a></li> -->
+		<!--                   <li><a href="http://twitter.github.com/bootstrap/examples/hero.html#">Something else here</a></li> -->
+		<!--                   <li class="divider"></li> -->
+		<!--                   <li class="nav-header">Nav header</li> -->
+		<!--                   <li><a href="http://twitter.github.com/bootstrap/examples/hero.html#">Separated link</a></li> -->
+		<!--                   <li><a href="http://twitter.github.com/bootstrap/examples/hero.html#">One more separated link</a></li> -->
+		<!--                 </ul> -->
+		<!--               </li> -->
+		            </ul>
+		            <pretty:link mappingId="signin">
+			            <form class="navbar-form pull-right">
+			              <input class="span2" type="text" placeholder="Email"/>
+			              <input class="span2" type="password" placeholder="Password"/>
+			              <button type="submit" class="btn">Sign in</button>
+			            </form>
+		            </pretty:link>
+		            <pretty:link mappingId="signup">
+		            	<button type="submit" class="btn btn-primary">Sign up</button>
+		            </pretty:link>
+		          </div><!--/.nav-collapse -->
+		        </div>
+		      </div>
+		    </div>
+		
+		    <div class="container">
+		
+		      <!-- Main hero unit for a primary marketing message or call to action -->
+		      <div class="hero-unit">
+		      <h1>Welcome to Nba Community</h1>
+		        <p>Compete with your friends with the aim of showing who is the best manager of the best basketball league</p> 		
+		        <p><a href="http://twitter.github.com/bootstrap/examples/hero.html#" class="btn btn-primary btn-large">Learn more »</a></p>
+		      </div>
+		
+		      <!-- Example row of columns -->
+		      <div class="row">
+		      	<div class="span4">
+		          <h2>Explorer</h2>
+		          <p>Walk around the website to find out the principal features which it offers to you!</p>
+		          <p><a class="btn" href="http://twitter.github.com/bootstrap/examples/hero.html#">View details »</a></p>
+		        </div>
+		        <div class="span4">
+		          <h2>Create a new League</h2>
+		          <p>Create a new private league in which you can play with your friends.</p>
+		          <p><a class="btn" href="http://twitter.github.com/bootstrap/examples/hero.html#">View details »</a></p>
+		        </div>
+		        <div class="span4">
+		          <h2>Look for an existing league</h2>
+		          <p>You can join to an existing public or private league. </p>
+		          <p><a class="btn" href="http://twitter.github.com/bootstrap/examples/hero.html#">View details »</a></p>
+		       </div>        
+		      </div>
+				
+		    </div> <!-- /container -->
+		
+		    <!-- Le javascript
+		    ================================================== -->
+		    <!-- Placed at the end of the document so the pages load faster -->
+		    <script src="./home_files/jquery.js"></script>
+		    <script src="./home_files/bootstrap-transition.js"></script>
+		    <script src="./home_files/bootstrap-alert.js"></script>
+		    <script src="./home_files/bootstrap-modal.js"></script>
+		    <script src="./home_files/bootstrap-dropdown.js"></script>
+		    <script src="./home_files/bootstrap-scrollspy.js"></script>
+		    <script src="./home_files/bootstrap-tab.js"></script>
+		    <script src="./home_files/bootstrap-tooltip.js"></script>
+		    <script src="./home_files/bootstrap-popover.js"></script>
+		    <script src="./home_files/bootstrap-button.js"></script>
+		    <script src="./home_files/bootstrap-collapse.js"></script>
+		    <script src="./home_files/bootstrap-carousel.js"></script>
+		    <script src="./home_files/bootstrap-typeahead.js"></script>
+		
+		  
+		
+		<div id="window-resizer-tooltip" style="display: block;">
+			<a href="http://twitter.github.com/bootstrap/examples/hero.html#" title="Edit settings" style="background-image: url(chrome-extension://kkelicaakdanhinjdeammmilcgefonfh/images/icon_19.png);"></a><span class="tooltipTitle">Window size: </span><span class="tooltipWidth" id="winWidth">1276</span> x <span class="tooltipHeight" id="winHeight">724</span><br/><span class="tooltipTitle">Viewport size: </span><span class="tooltipWidth" id="vpWidth">1276</span> x <span class="tooltipHeight" id="vpHeight">585</span>
+		</div>
+		</ui:define>
+	
+	</ui:composition>
+</html>
