@@ -6,10 +6,34 @@
 <!-- INICIO URL MAPINGS -->
 	
 	<!-- PUBLIC URLs-->
-		
+	
+	<!-- Public Mappings -->
 	<url-mapping id="index">
 		<pattern value="/" />
-		<view-id value="faces/public/index.jsf" />
+		<view-id value="/faces/public/home.jsf" />
+<!-- 		<view-id value="faces/public/index.jsf" /> -->
+	</url-mapping>
+	
+	<url-mapping id="signup">
+		<pattern value="/public/signup/" />
+		<view-id value="/faces/public/signUp.jsf" />
+	</url-mapping>
+	
+	<url-mapping id="signin">
+		<pattern value="/public/signin/" />
+		<view-id value="/faces/public/signIn.jsf" />
+	</url-mapping>
+	
+	<!-- Self Mappings -->
+	<url-mapping id="dashboard">
+		<pattern value="/self/dashboard/" />
+		<view-id value="/faces/app/self/dashboard.jsf" />
+	</url-mapping>
+	
+	<!-- Admin Mappings -->
+	<url-mapping id="admin">
+		<pattern value="/admin/" />
+		<view-id value="/faces/admin/admin-dashboard.jsf" />
 	</url-mapping>
 	
 <!-- 	<url-mapping id="login"> -->
