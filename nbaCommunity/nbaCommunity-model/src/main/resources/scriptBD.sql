@@ -123,11 +123,18 @@ CREATE  TABLE `nbaCommunity`.`scoring` (
   `teamWin` INT(2) NULL ,
   `teamLose` INT(2) NULL ,
   INDEX `idPlayer_idx` (`idPlayer` ASC) ,
+  INDEX `idMatch_idx` (`idMatch` ASC),
   CONSTRAINT `idPlayer`
     FOREIGN KEY (`idPlayer` )
     REFERENCES `nbaCommunity`.`player` (`idPlayer` )
     ON DELETE CASCADE
-    ON UPDATE CASCADE);
+    ON UPDATE CASCADE 
+  CONSTRAINT `idMatch`
+  	FOREIGN KEY (`idMatch` )
+  	REFERENCES `nbaCommunity`.`match` (`idMatch` )
+  	ON DELETE NO ACTION
+  ON UPDATE NO ACTION);
+
 
 <!-- hibernate_sequence TABLE --> 
  CREATE  TABLE `nbaCommunity`.`hibernate_sequence` (

@@ -13,5 +13,5 @@ public interface IUserDao {
 	void betForPlayers(List<Player> players);
 	void tradePlayers(List<Player> playes);
 	void register(User user);
-
+	User getUserByUsername(String username);
 }

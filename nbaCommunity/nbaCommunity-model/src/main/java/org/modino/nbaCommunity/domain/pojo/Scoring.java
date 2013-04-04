@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -20,7 +21,7 @@ import org.hibernate.annotations.DynamicUpdate;
 @Embeddable
 @Named("scoring")
 @SessionScoped
-@Entity
+@Entity @IdClass(ScoringId.class)
 @Table(name="scoring")
 @DynamicInsert(false)
 //Solo las columnas modificadas serán actualizadas en tiempo de ejecucion
