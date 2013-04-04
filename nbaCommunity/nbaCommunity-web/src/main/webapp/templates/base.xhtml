@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">  
+      
+	<f:view locale="#{facesContext.externalContext.requestLocale}">
+
+        <h:head>
+     
+            <title><ui:insert name="title">#{msg.homeTitle}</ui:insert></title>
+      
+			<ui:insert name="app-css">
+				<h:outputStylesheet library="css" name="../bootstrap.css"  />
+	            <h:outputStylesheet library="css" name="../bootstrap-responsive.css"  />
+	            <h:outputStylesheet library="css" name="../style.css"  />
+			</ui:insert>
+			
+			<ui:insert name="bootstrap-jquery">
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" />
+			</ui:insert>
+			
+			<ui:insert name="bootstrap-js">
+				<h:outputScript library="js" name="bootstrap.min.js" />
+			</ui:insert>
+            
+            <ui:insert name="head">        
+            </ui:insert>
+
+        </h:head>
+
+        <h:body>    	    
+        		<ui:insert name="nav-menu">
+	        		<!-- In case user is Public show that navigation bar-->	        		
+		        		<ui:include src="/templates/include/public-navbar.xhtml"/>
+       			</ui:insert>
+
+        	
+				<!-- 960px grid 12 column-->
+				<div class="container">
+			     	<ui:insert name="base-body">
+        		
+        			</ui:insert>
+					<!-- Footer -->
+					<ui:insert name="footer">
+						<ui:include src="/templates/include/footer.xhtml"/>						
+					</ui:insert>
+				
+				</div>
+        </h:body>
+
+	</f:view>
+</html>
